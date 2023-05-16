@@ -9,13 +9,31 @@ function App() {
 	const [exercises, setExercises] = useState([]);
 	const [filteredExercises, setFilteredExercises] = useState([]);
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		fetch('https://wger.de/api/v2/exerciseinfo/?limit=1200')
+			.then((response) => response.json())
+			.then((data) => {
+				setExercises(data.results);
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		const filtered = exercises.filter((exercise) => {
+			return exercise.language.id === 2 && exercise.images.length;
+		});
+
+		setFilteredExercises(filtered);
+		console.log(filtered);
+	};
 
 	return (
 		<>
 			<Header />
-			<Form />
-			<Workout />
+			<Form handleSubmit={handleSubmit} />
+			<Workout exercises={filteredExercises} />
 		</>
 	);
 }
