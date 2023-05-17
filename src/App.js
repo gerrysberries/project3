@@ -25,11 +25,11 @@ function App() {
 	console.log('app has rendered');
 
 	return (
-		<>
+		<div className="wrapper">
 			<Header />
 			<Form setExercises={setExercises} exercises={exercises} />
 			{/* <Workout exercises={exercises} /> */}
-		</>
+		</div>
 	);
 }
 

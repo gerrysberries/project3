@@ -76,13 +76,13 @@ const Form = ({exercises, setExercises}) => {
 	console.log('form has rendered');
 
 	return (
-		<div>
+		<div className="wrapper">
 			<form onSubmit={getWorkout}>
 				<p></p>
 				<label htmlFor="howMany">Number of exercises: </label>
 				<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange}>
 					<option value="" defaultValue>
-						Select a number:
+						----- SELECT -----
 					</option>
 					<option value={userFilters.value}>1</option>
 					<option value={userFilters.value}>2</option>
@@ -95,17 +95,9 @@ const Form = ({exercises, setExercises}) => {
 					<option value={userFilters.value}>9</option>
 					<option value={userFilters.value}>10</option>
 				</select>
-				<br />
-				<input type="radio" id="upper" name="workoutType" value="upper" onChange={handleChange} />
-				<label htmlFor="upper">Upper Body</label>
-				<input type="radio" id="lower" name="workoutType" value="lower" checked={userFilters.workoutType === 'lower'} onChange={handleChange} />
-				<label htmlFor="lower">Lower Body</label>
-				<input type="radio" id="full-body" name="workoutType" value="full" checked={userFilters.workoutType === 'full'} onChange={handleChange} />
-				<label htmlFor="full-body">Full Body</label>
-				<br />
-				<br />
+
 				<fieldset>
-					<legend>Which muscle groups would you like to include?</legend>
+					<legend>Select muscle groups to include:</legend>
 					<input type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
 					<label htmlFor="arms">Arms</label>
 					<input type="checkbox" name="back" id="back" checked={userFilters.back} onChange={handleChange} />
@@ -122,7 +114,7 @@ const Form = ({exercises, setExercises}) => {
 						Reset filters
 					</button>
 				</fieldset>
-				<button>Get Workout!</button>
+				<button className="btn-generate">Get Workout!</button>
 			</form>
 			<Workout filteredExercises={filteredExercises} />
 		</div>

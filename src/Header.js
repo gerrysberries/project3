@@ -1,8 +1,8 @@
 const Header = () => {
 	return (
-		<>
-			<h1>Random Workout Generator</h1>
-		</>
+		<div className="wrapper">
+			<h1 className="main-heading">Random Workout Generator</h1>
+		</div>
 	);
 };
 
