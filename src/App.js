@@ -28,7 +28,7 @@ function App() {
 		<div>
 			<Header />
 			<Form setExercises={setExercises} exercises={exercises} />
-			<footer className="footer">GERARD JUAN © 2023</footer>
+			<footer className="footer">© JUNO COLLEGE 2023</footer>
 		</div>
 	);
 }
