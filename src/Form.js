@@ -48,8 +48,29 @@ const Form = ({exercises, setExercises}) => {
 			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 13)];
 		}
 
-		setFilteredExercises(newArray);
-		console.log(newArray);
+		setFilteredExercises(randomize(newArray, userFilters.howMany));
+	};
+
+	const randomize = (array, numElements) => {
+		const shuffledArray = array.sort(() => 0.5 - Math.random());
+		const selectedElements = shuffledArray.slice(0, numElements);
+
+		return selectedElements;
+	};
+
+	const reset = (event) => {
+		event.preventDefault();
+		setUserFilters({
+			howMany: 0,
+			abs: false,
+			arms: false,
+			back: false,
+			chest: false,
+			legs: false,
+			shoulders: false,
+		});
+		setFilteredExercises([]);
+		console.log(userFilters);
 	};
 
 	console.log('form has rendered');
@@ -60,8 +81,8 @@ const Form = ({exercises, setExercises}) => {
 				<p></p>
 				<label htmlFor="howMany">Number of exercises: </label>
 				<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange}>
-					<option value="" disabled>
-						Pick one:
+					<option value="" defaultValue>
+						Select a number:
 					</option>
 					<option value={userFilters.value}>1</option>
 					<option value={userFilters.value}>2</option>
@@ -85,18 +106,21 @@ const Form = ({exercises, setExercises}) => {
 				<br />
 				<fieldset>
 					<legend>Which muscle groups would you like to include?</legend>
-					<input type="checkbox" name="arms" id="arms" value={userFilters.arms} onChange={handleChange} />
+					<input type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
 					<label htmlFor="arms">Arms</label>
-					<input type="checkbox" name="back" id="back" value={userFilters.back} onChange={handleChange} />
+					<input type="checkbox" name="back" id="back" checked={userFilters.back} onChange={handleChange} />
 					<label htmlFor="back">Back</label>
-					<input type="checkbox" name="chest" id="chest" value={userFilters.chest} onChange={handleChange} />
+					<input type="checkbox" name="chest" id="chest" checked={userFilters.chest} onChange={handleChange} />
 					<label htmlFor="chest">Chest</label>
-					<input type="checkbox" name="core" id="core" value={userFilters.core} onChange={handleChange} />
+					<input type="checkbox" name="core" id="core" checked={userFilters.core} onChange={handleChange} />
 					<label htmlFor="core">Core</label>
-					<input type="checkbox" name="legs" id="legs" value={userFilters.legs} onChange={handleChange} />
+					<input type="checkbox" name="legs" id="legs" checked={userFilters.legs} onChange={handleChange} />
 					<label htmlFor="legs">Legs</label>
-					<input type="checkbox" name="shoulders" id="shoulders" value={userFilters.shoulders} onChange={handleChange} />
+					<input type="checkbox" name="shoulders" id="shoulders" checked={userFilters.shoulders} onChange={handleChange} />
 					<label htmlFor="shoulders">Shoulders</label>
+					<button type="button" onClick={reset}>
+						Reset filters
+					</button>
 				</fieldset>
 				<button>Get Workout!</button>
 			</form>
