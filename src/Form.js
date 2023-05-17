@@ -10,7 +10,6 @@ const Form = ({exercises, setExercises}) => {
 		chest: false,
 		legs: false,
 		shoulders: false,
-		// workoutType: '',
 	});
 	const [filteredExercises, setFilteredExercises] = useState([]);
 
@@ -99,7 +98,7 @@ const Form = ({exercises, setExercises}) => {
 
 				<fieldset>
 					<legend>Select muscle groups to include:</legend>
-					<input type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
+					<input className="lol" type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
 					<label htmlFor="arms">Arms</label>
 					<input type="checkbox" name="back" id="back" checked={userFilters.back} onChange={handleChange} />
 					<label htmlFor="back">Back</label>

@@ -80,7 +80,7 @@ body {
 	height: 100%;
 	line-height: 2;
 	font-family: 'Oswald', sans-serif;
-	background-color: #fff;
+	background-color: hsl(0, 0%, 100%);
 	text-transform: uppercase;
 }
 
@@ -90,13 +90,21 @@ body {
 	margin: 0 auto;
 }
 
+header {
+	background: center/cover no-repeat url(../assets/arnold.jpg);
+	min-height: min(80vh, 500px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 32px;
+}
+
 .mainHeading {
 	color: gold;
 	text-align: center;
 	font-family: 'Anton', sans-serif;
-	font-size: 4rem;
-	text-shadow: 2px 2px 2px #000000;
-	/* width: fit-content; */
+	font-size: 6rem;
+	text-shadow: 2px 2px 2px hsl(0, 0%, 0%);
 }
 
 form {
@@ -106,12 +114,23 @@ form {
 
 .selectContainer {
 	text-align: center;
+	margin-bottom: 16px;
+}
+
+.selectContainer label {
+	font-weight: 500;
 }
 
 select {
-	border: none;
-	padding: 0.25rem 0.75rem;
+	background-color: hsl(0, 0%, 100%);
+	border: 2px solid hsl(51, 100%, 50%);
 	border-radius: 16px;
+	padding: 0.25rem 0.75rem;
+}
+
+select:hover {
+	color: hsl(51, 100%, 50%);
+	background-color: hsl(0, 0%, 0%);
 }
 
 select:hover,
@@ -128,16 +147,22 @@ label {
 }
 
 fieldset {
+	position: relative;
 	text-align: center;
-	border: 2px solid gold;
+	border: 2px solid hsl(51, 100%, 50%);
 	border-radius: 16px;
+	margin-bottom: 16px;
+}
+
+fieldset > legend {
+	font-weight: 500;
 }
 
 button {
-	color: black;
-	background-color: white;
+	color: hsl(0, 0%, 0%);
+	background-color: hsl(0, 0%, 100%);
 	padding: 0.25rem 0.75rem;
-	outline: 2px solid gold;
+	outline: 2px solid hsl(51, 100%, 50%);
 	border: none;
 	border-radius: 16px;
 	text-transform: uppercase;
@@ -146,21 +171,43 @@ button {
 button:hover,
 button:focus-visible {
 	cursor: pointer;
-	color: gold;
-	background-color: black;
+	color: hsl(51, 100%, 50%);
+	background-color: hsl(0, 0%, 0%);
 }
 
 .btnGenerate {
-	margin: 16px 0;
 	align-self: center;
 	width: fit-content;
 	font-size: 2rem;
+	font-weight: 700;
+	margin: 16px 0;
+}
+
+.workout {
+	margin-top: 32px;
+	margin-bottom: 32px;
 }
 
 .workoutList {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+	row-gap: 4rem;
+	column-gap: 1.5rem;
 	list-style: none;
+	padding: 16px;
+	text-align: center;
+	border-radius: 16px;
+	/* outline: 2px solid gold; */
+}
+
+.workoutList li {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	flex-basis: 30%;
+	/* outline: 1px solid red; */
 }
 
 img {
@@ -170,6 +217,13 @@ img {
 
 .exerciseName {
 	text-transform: uppercase;
+}
+
+.footer {
+	width: 100%;
+	text-align: center;
+	background-color: hsl(0, 0%, 0%);
+	color: hsl(51, 100%, 50%);
 }
 
 @media (width < 550px) {
@@ -182,4 +236,8 @@ img {
 		font-size: 3.5rem;
 		line-height: 1.5;
 	}
+}
+
+.lol {
+	border-radius: 50%;
 }

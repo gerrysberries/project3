@@ -25,10 +25,10 @@ function App() {
 	console.log('app has rendered');
 
 	return (
-		<div className="wrapper">
+		<div>
 			<Header />
 			<Form setExercises={setExercises} exercises={exercises} />
-			{/* <Workout exercises={exercises} /> */}
+			<footer className="footer">GERARD JUAN © 2023</footer>
 		</div>
 	);
 }
