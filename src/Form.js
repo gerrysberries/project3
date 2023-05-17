@@ -78,23 +78,24 @@ const Form = ({exercises, setExercises}) => {
 	return (
 		<div className="wrapper">
 			<form onSubmit={getWorkout}>
-				<p></p>
-				<label htmlFor="howMany">Number of exercises: </label>
-				<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange}>
-					<option value="" defaultValue>
-						----- SELECT -----
-					</option>
-					<option value={userFilters.value}>1</option>
-					<option value={userFilters.value}>2</option>
-					<option value={userFilters.value}>3</option>
-					<option value={userFilters.value}>4</option>
-					<option value={userFilters.value}>5</option>
-					<option value={userFilters.value}>6</option>
-					<option value={userFilters.value}>7</option>
-					<option value={userFilters.value}>8</option>
-					<option value={userFilters.value}>9</option>
-					<option value={userFilters.value}>10</option>
-				</select>
+				<div className="selectContainer">
+					<label htmlFor="howMany">Number of exercises: </label>
+					<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange}>
+						<option value="" defaultValue>
+							----- SELECT -----
+						</option>
+						<option value={userFilters.value}>1</option>
+						<option value={userFilters.value}>2</option>
+						<option value={userFilters.value}>3</option>
+						<option value={userFilters.value}>4</option>
+						<option value={userFilters.value}>5</option>
+						<option value={userFilters.value}>6</option>
+						<option value={userFilters.value}>7</option>
+						<option value={userFilters.value}>8</option>
+						<option value={userFilters.value}>9</option>
+						<option value={userFilters.value}>10</option>
+					</select>
+				</div>
 
 				<fieldset>
 					<legend>Select muscle groups to include:</legend>
@@ -110,11 +111,11 @@ const Form = ({exercises, setExercises}) => {
 					<label htmlFor="legs">Legs</label>
 					<input type="checkbox" name="shoulders" id="shoulders" checked={userFilters.shoulders} onChange={handleChange} />
 					<label htmlFor="shoulders">Shoulders</label>
-					<button type="button" onClick={reset}>
+					<button className="btnReset" type="button" onClick={reset}>
 						Reset filters
 					</button>
 				</fieldset>
-				<button className="btn-generate">Get Workout!</button>
+				<button className="btnGenerate">Get Workout!</button>
 			</form>
 			<Workout filteredExercises={filteredExercises} />
 		</div>

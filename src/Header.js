@@ -1,7 +1,7 @@
 const Header = () => {
 	return (
 		<div className="wrapper">
-			<h1 className="main-heading">Random Workout Generator</h1>
+			<h1 className="mainHeading">Random Workout Generator</h1>
 		</div>
 	);
 };

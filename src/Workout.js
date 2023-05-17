@@ -2,10 +2,10 @@ const Workout = ({filteredExercises}) => {
 	return (
 		<section className="workout">
 			<div className="">
-				<ul>
+				<ul className="workoutList">
 					{filteredExercises.map((exercise) => (
-						<li key={exercise.id}>
-							{<img src={exercise.images[0].image} alt="" />}
+						<li key={exercise.id} className="exercise">
+							{<img className="exerciseImage" src={exercise.images[0].image} alt="" />}
 
 							<p className="exerciseName">{exercise.name}</p>
 						</li>
