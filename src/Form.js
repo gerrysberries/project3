@@ -4,7 +4,13 @@ import Workout from './Workout';
 const Form = ({exercises, setExercises}) => {
 	const [userFilters, setUserFilters] = useState({
 		howMany: 0,
-		workoutType: '',
+		abs: false,
+		arms: false,
+		back: false,
+		chest: false,
+		legs: false,
+		shoulders: false,
+		// workoutType: '',
 	});
 	const [filteredExercises, setFilteredExercises] = useState([]);
 
@@ -13,7 +19,7 @@ const Form = ({exercises, setExercises}) => {
 		setUserFilters((prev) => {
 			return {
 				...prev,
-				[name]: value,
+				[name]: type === 'checkbox' ? checked : value,
 			};
 		});
 	}
@@ -21,17 +27,29 @@ const Form = ({exercises, setExercises}) => {
 	const getWorkout = (event) => {
 		event.preventDefault();
 
-		setFilteredExercises(
-			exercises.filter((exercise) => {
-				if (userFilters.workoutType === 'lower') {
-					return exercise.category.id === 12;
-				} else if (userFilters.workoutType === 'upper') {
-					return exercise.category.id === 8;
-				}
-			})
-		);
-		console.log(userFilters);
-		console.log(filteredExercises);
+		let newArray = [];
+
+		if (userFilters.arms) {
+			newArray = exercises.filter((exercise) => exercise.category.id === 8);
+		}
+		if (userFilters.back) {
+			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 12)];
+		}
+		if (userFilters.chest) {
+			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 11)];
+		}
+		if (userFilters.core) {
+			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 10)];
+		}
+		if (userFilters.legs) {
+			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 9)];
+		}
+		if (userFilters.shoulders) {
+			newArray = [...newArray, ...exercises.filter((exercise) => exercise.category.id === 13)];
+		}
+
+		setFilteredExercises(newArray);
+		console.log(newArray);
 	};
 
 	console.log('form has rendered');
@@ -65,6 +83,21 @@ const Form = ({exercises, setExercises}) => {
 				<label htmlFor="full-body">Full Body</label>
 				<br />
 				<br />
+				<fieldset>
+					<legend>Which muscle groups would you like to include?</legend>
+					<input type="checkbox" name="arms" id="arms" value={userFilters.arms} onChange={handleChange} />
+					<label htmlFor="arms">Arms</label>
+					<input type="checkbox" name="back" id="back" value={userFilters.back} onChange={handleChange} />
+					<label htmlFor="back">Back</label>
+					<input type="checkbox" name="chest" id="chest" value={userFilters.chest} onChange={handleChange} />
+					<label htmlFor="chest">Chest</label>
+					<input type="checkbox" name="core" id="core" value={userFilters.core} onChange={handleChange} />
+					<label htmlFor="core">Core</label>
+					<input type="checkbox" name="legs" id="legs" value={userFilters.legs} onChange={handleChange} />
+					<label htmlFor="legs">Legs</label>
+					<input type="checkbox" name="shoulders" id="shoulders" value={userFilters.shoulders} onChange={handleChange} />
+					<label htmlFor="shoulders">Shoulders</label>
+				</fieldset>
 				<button>Get Workout!</button>
 			</form>
 			<Workout filteredExercises={filteredExercises} />

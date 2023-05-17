@@ -1,13 +1,12 @@
 import './App.css';
 import Header from './Header';
 import Form from './Form';
-import Workout from './Workout';
 
 import {useState, useEffect} from 'react';
 
 function App() {
 	const [exercises, setExercises] = useState([]);
-	// const [filteredExercises, setFilteredExercises] = useState([]);
+	const [filteredExercises, setFilteredExercises] = useState([]);
 
 	useEffect(() => {
 		fetch('https://wger.de/api/v2/exerciseinfo/?limit=1200')
