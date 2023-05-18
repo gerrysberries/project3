@@ -25,7 +25,9 @@ function App() {
 		<div>
 			<Header />
 			<Form setExercises={setExercises} exercises={exercises} />
-			<footer className="footer">© JUNO COLLEGE 2023</footer>
+			<footer className="footer">
+				<a href="https://junocollege.com/">© JUNO COLLEGE 2023</a>
+			</footer>
 		</div>
 	);
 }
