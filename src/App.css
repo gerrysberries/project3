@@ -235,4 +235,13 @@ img {
 		font-size: 3.5rem;
 		line-height: 1.5;
 	}
+
+	.workoutList li {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		flex-basis: 45%;
+		padding: 0;
+	}
 }
