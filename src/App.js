@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Form from './Form';
+
+import {useState, useEffect} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [exercises, setExercises] = useState([]);
+	// const [filteredExercises, setFilteredExercises] = useState([]);
+
+	useEffect(() => {
+		fetch('https://wger.de/api/v2/exerciseinfo/?limit=1200')
+			.then((response) => response.json())
+			.then((data) => {
+				setExercises(
+					data.results.filter((exercise) => {
+						// extract only those which have images and are in english
+						return exercise.language.id === 2 && exercise.images.length;
+					})
+				);
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
+	console.log('app has rendered');
+
+	return (
+		<div>
+			<Header />
+			<Form setExercises={setExercises} exercises={exercises} />
+			<footer className="footer">© JUNO COLLEGE 2023</footer>
+		</div>
+	);
 }
 
 export default App;
