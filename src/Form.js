@@ -69,17 +69,14 @@ const Form = ({exercises, setExercises}) => {
 			shoulders: false,
 		});
 		setFilteredExercises([]);
-		console.log(userFilters);
 	};
-
-	console.log('form has rendered');
 
 	return (
 		<div className="wrapper">
 			<form onSubmit={getWorkout}>
 				<div className="selectContainer">
 					<label htmlFor="howMany">Number of exercises: </label>
-					<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange}>
+					<select name="howMany" id="howMany" value={userFilters.howMany} onChange={handleChange} required>
 						<option value="" defaultValue>
 							----- SELECT -----
 						</option>
@@ -98,7 +95,7 @@ const Form = ({exercises, setExercises}) => {
 
 				<fieldset>
 					<legend>Select muscle groups to include:</legend>
-					<input className="lol" type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
+					<input type="checkbox" name="arms" id="arms" checked={userFilters.arms} onChange={handleChange} />
 					<label htmlFor="arms">Arms</label>
 					<input type="checkbox" name="back" id="back" checked={userFilters.back} onChange={handleChange} />
 					<label htmlFor="back">Back</label>

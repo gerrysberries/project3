@@ -6,7 +6,6 @@ import {useState, useEffect} from 'react';
 
 function App() {
 	const [exercises, setExercises] = useState([]);
-	// const [filteredExercises, setFilteredExercises] = useState([]);
 
 	useEffect(() => {
 		fetch('https://wger.de/api/v2/exerciseinfo/?limit=1200')
@@ -21,8 +20,6 @@ function App() {
 			})
 			.catch((error) => console.error(error));
 	}, []);
-
-	console.log('app has rendered');
 
 	return (
 		<div>
